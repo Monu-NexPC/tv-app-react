@@ -19,7 +19,7 @@ function App() {
     <>
       <nav className="navbar bg-light">
         <div className="container-fluid">
-          <span className="navbar-brand mb-0 h1"><Link className="nav-link" to="/">Navbar</Link></span>
+          <span className="navbar-brand mb-0 h1"><Link className="nav-link" to="/">OurTV</Link></span>
           <div className="" id="navbarNav">
             <ul className="navbar-nav d-flex flex-row">
               {logged?(

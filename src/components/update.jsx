@@ -1,12 +1,13 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import {base} from './baseURL'
 
-const baseURL = "https://live-tv-api.herokuapp.com/channelapi/update/";
+const baseURL = base+"update/";
 
 function Update({logged}) {
-    
+  const navigate = useNavigate();
     const { id } = useParams();
     const [video, setVideo] = useState({
         name : '',
@@ -30,11 +31,20 @@ function Update({logged}) {
         });
     }
     useEffect(() => {
-        axios.get('https://live-tv-api.herokuapp.com/channelapi/getOne/'+id).then((response) => {
+        axios.get(base+'getOne/'+id).then((response) => {
           setVideo(response.data);
           //console.log(response.data);
         });
       }, []);
+
+      /// Delete Data
+      const deleteId=()=>{
+        axios.delete(base+'delete/'+id).then((response) => {
+          navigate('/channellist');
+          //console.log(response.data);
+        });
+      }
+
     /*
     {
             name : '',
@@ -70,6 +80,9 @@ function Update({logged}) {
             <input id="category" className='form-control my-1' type="text" placeholder='category' defaultValue={video.category}/>
             <button onClick={load} className="btn btn-dark">Add</button>
             
+        </div>
+        <div className='col-8 col-md-4 col-lg-2 mx-auto my-4'>
+            <button onClick={deleteId} className='btn w-100 d-block btn-outline-danger'>Delete</button>
         </div>
     </>
   )

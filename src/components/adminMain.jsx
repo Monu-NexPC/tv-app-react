@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import axios from "axios";
+import {base} from './baseURL'
 
-const baseURL = "https://live-tv-api.herokuapp.com/channelapi/post";
+const baseURL = base+"post/";
 
 function AdminMain({logged, mainLoggin}) {
     const [DataToSent, setDataToSent] = useState({})
