@@ -2,7 +2,7 @@ import axios from "axios";
 import React, {useEffect, useState} from "react";
 import { useNavigate, Link } from "react-router-dom"
 
-const baseURL = "http://localhost:5000/channelapi/getAll";
+const baseURL = "https://live-tv-api.herokuapp.com/channelapi/getAll";
 
 export default function ChannelList({logged}) {
   const [post, setPost] = useState(null);

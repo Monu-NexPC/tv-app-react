@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 // Lazy load the YouTube player
-const baseURL = "http://localhost:5000/channelapi/getOne/"
+const baseURL = "https://live-tv-api.herokuapp.com/channelapi/getOne/"
 
 function Watch() {
      const { id } = useParams();

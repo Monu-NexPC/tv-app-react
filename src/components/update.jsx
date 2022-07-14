@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { useParams } from "react-router-dom";
 
-const baseURL = "http://localhost:5000/channelapi/update/";
+const baseURL = "https://live-tv-api.herokuapp.com/channelapi/update/";
 
 function Update({logged}) {
     
@@ -30,7 +30,7 @@ function Update({logged}) {
         });
     }
     useEffect(() => {
-        axios.get('http://localhost:5000/channelapi/getOne/'+id).then((response) => {
+        axios.get('https://live-tv-api.herokuapp.com/channelapi/getOne/'+id).then((response) => {
           setVideo(response.data);
           //console.log(response.data);
         });
