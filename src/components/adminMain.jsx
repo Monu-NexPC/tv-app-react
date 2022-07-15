@@ -13,6 +13,8 @@ function AdminMain({logged, mainLoggin}) {
              low : document.getElementById('low').value,
              mid : document.getElementById('mid').value,
              high : document.getElementById('high').value,
+             hd : document.getElementById('hd').value,
+             language : document.getElementById('language').value,
              category : document.getElementById('category').value,
         })
         .then((response) => {
@@ -45,6 +47,8 @@ function AdminMain({logged, mainLoggin}) {
             <input id="low" className='form-control my-1' type="text" placeholder='low'/>
             <input id="mid" className='form-control my-1' type="text" placeholder='mid'/>
             <input id="high" className='form-control my-1' type="text" placeholder='high'/>
+            <input id="hd" className='form-control my-1' type="text" placeholder='hd'/>
+            <input id="language" className='form-control my-1' type="text" placeholder='language'/>
             <input id="category" className='form-control my-1' type="text" placeholder='category'/>
             <button onClick={load} className="btn btn-dark">Add</button>
         </div>

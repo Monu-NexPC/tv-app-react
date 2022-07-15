@@ -86,14 +86,14 @@ const similar=(x)=>{
             </select>
         </div>
         <h3 className='mt-5'>Similar</h3>
-        <div className='d-flex '>
+        <div className='d-flex overflow-auto'>
             
         {post.length===0?'':post.map((post, index)=>(
-        <div key={index} className="border col-4 text-center">
+        <div key={index} className="border col-4 text-center m-1">
             <div className="col-12 col-md-10 col-lg-8 mx-auto">
                 <img src='https://www.clipartmax.com/png/middle/241-2419765_live-tv-streaming-icon-live-tv-icon-png.png' calss="" style={{width:'100%'}} alt="" />
             </div>
-            <h1> <Link to={'/watch/'+post._id}>{post.name}</Link></h1>
+            <h5> <Link to={'/watch/'+post._id}>{post.name}</Link></h5>
             <h4>{post.category}</h4>
         </div>
       ))}
