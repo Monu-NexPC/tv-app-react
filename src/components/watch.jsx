@@ -13,10 +13,8 @@ function Watch() {
     const [video, setVideo] = useState();
     const [videoUrl, setVideoUrl] = useState('');
     const [play, setPlay] = useState(false)
-    const [played, setPlayed] = useState(0)
-    const [volume, setVolume] = useState(0.1)
+    const [volume, setVolume] = useState(1)
     const playMe =()=>{
-        let temp = play;
         setPlay(!play)
     }
     const full= ()=>{
@@ -62,12 +60,12 @@ const similar=(x)=>{
   return (
     <div className='col-12 col-md-8 col-lg-6 mx-auto px-2 d-flex flex-column'>
         <div className=''>
-            <ReactPlayer className="" width='100%' id="myvideo" url={videoUrl} volume={volume} playing={play} onSeek={e => console.log('onSeek', e)} onBuffer={() => console.log('onBuffer')}  onProgress={state=>console.log('onProgress', state)}/>
+            <ReactPlayer className="" width='100%' id="myvideo" url={videoUrl} volume={volume} playing={play} />
         </div>
-        <div className='d-flex justify-content-center'>
-            <button onClick={playMe}>{play?(<i className="bi bi-pause border"></i>):(<i className="bi bi-play-fill border"></i>)}</button>
-            <button onClick={full} ><i className="bi bi-arrows-fullscreen"></i></button>
-            <div className='col-4 px-1'>
+        <div className='d-flex justify-content-center mt-1'>
+            <button onClick={playMe} className="mx-1">{play?(<i className="bi bi-pause"></i>):(<i className="bi bi-play-fill border"></i>)}</button>
+            <button onClick={full} className="mx-1"><i className="bi bi-arrows-fullscreen"></i></button>
+            <div className='col-4 px-1 d-none d-md-block mx-1'>
                 <input type="range" onChange={e=>setVolume(Number(e.target.value))} className="form-range col-8" min="0" max="1" step="0.1" id="customRange3"></input>
             </div>
             {/* <div className="col-4">

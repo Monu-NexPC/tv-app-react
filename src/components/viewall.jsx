@@ -8,7 +8,6 @@ const baseURL = base+"getAll/";
 export default function View({logged}) {
   const [post, setPost] = useState(null);
   const [tempPost, setTempPost] = useState(null);
-  const [tempPost2, setTempPost2] = useState(null);
   const [lang, setLang]= useState('1');
   const[genre, setGenre]= useState('1');
 
@@ -16,7 +15,6 @@ export default function View({logged}) {
     axios.get(baseURL).then((response) => {
       setPost(response.data);
       setTempPost(response.data);
-      setTempPost2(response.data);
     });
   }, []);
   const languageChange = (e)=>{
@@ -28,6 +26,9 @@ export default function View({logged}) {
       e.target.value=='1'?setPost(lang==='1'?tempPost:tempPost.filter(a=>{return a.language===lang})):setPost(tempPost.filter(a=>{return lang==='1'?a.category === e.target.value: a.category === e.target.value&&a.language==lang}));
       setGenre(e.target.value);
   }
+  const search = (e)=>{
+      setPost(tempPost.filter(a=> {return a.name.match(e.target.value)}))
+  }
   
 
   if (!post) return null;
@@ -35,8 +36,11 @@ export default function View({logged}) {
   return (
     <div className="row m-0">
       <div className="row m-0 g-0">
+        <div className="col-12">
+          <input type="text" name="" className="form-control" id="search" placeholder="Search" onChange={search}/>
+        </div>
         <div className="col-6">
-          <select className="form-control rounded-0" id="language" onChange={languageChange}>
+          <select className="form-select rounded-0 dropdown-toggle" id="language" onChange={languageChange}>
             <option value="1">Language All</option>
             <option value="hindi">Language Hindi</option>
             <option value="english">Language English</option>
@@ -47,7 +51,7 @@ export default function View({logged}) {
           </select>
         </div>
         <div className="col-6">
-          <select className="rounded-0 form-control" id="genre" onChange={genreChange}>
+          <select className="rounded-0 form-select dropdown-toggle" id="genre" onChange={genreChange}>
             <option value="1">All</option>
             <option value="news">News</option>
             <option value="music">Music</option>

@@ -15,6 +15,13 @@ function App() {
       setLogged(true);
     }
   }
+  const shareMe= async () => {
+    try {
+      await navigator.share({ title: "OurTv", description:"OurTv || LiveTv", url: "https://live-tv-react.herokuapp.com" });
+    } catch (err) {
+
+    }
+  }
   return (
     <>
       <nav className="navbar bg-light">
@@ -33,6 +40,9 @@ function App() {
               </li>
               ):('')}
             </ul>
+          </div>
+          <div className='float-end' onClick={shareMe}>
+            <i className="bi bi-share-fill"></i>
           </div>
         </div>
       </nav>
