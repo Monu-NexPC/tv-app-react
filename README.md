@@ -1,7 +1,5 @@
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
+# A Live Tv App Made With react 
+Soon I will also provide To run Perfectly. 
 ## Available Scripts
 
 In the project directory, you can run:

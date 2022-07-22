@@ -7,13 +7,14 @@ import {base} from './baseURL'
 
 const baseURL = base+"getOne/";
 
-function Watch() {
+function Watch({theme, channelName}) {
      const { id } = useParams();
      const [post, setPost] = useState([]);
     const [video, setVideo] = useState();
     const [videoUrl, setVideoUrl] = useState('');
     const [play, setPlay] = useState(false)
     const [volume, setVolume] = useState(1)
+    const [width ,setWidth] = useState('100%')
     const playMe =()=>{
         setPlay(!play)
     }
@@ -36,7 +37,7 @@ const similar=(x)=>{
           setVideo(response.data);
           setVideoUrl(response.data.low);
           similar(response.data.category)
-
+          channelName((response.data.name).toUpperCase())
         });
         
       }, [id]);
@@ -58,13 +59,13 @@ const similar=(x)=>{
             }
       }
   return (
-    <div className='col-12 col-md-8 col-lg-6 mx-auto px-2 d-flex flex-column'>
-        <div className=''>
-            <ReactPlayer className="" width='100%' id="myvideo" url={videoUrl} volume={volume} playing={play} />
+    <div className=' d-flex flex-column'>
+        <div className='col-12 col-md-8 col-lg-6 mx-auto px-2' id="myvideoCon" onClick={playMe}>
+            <ReactPlayer className="" width={`${width}`} id="myvideo" url={videoUrl} volume={volume} playing={play} pip={true} />
         </div>
         <div className='d-flex justify-content-center mt-1'>
-            <button onClick={playMe} className="mx-1">{play?(<i className="bi bi-pause"></i>):(<i className="bi bi-play-fill border"></i>)}</button>
-            <button onClick={full} className="mx-1"><i className="bi bi-arrows-fullscreen"></i></button>
+            <button onClick={playMe} className="mx-1 border-0 rounded-circle fs-4 overflow-hidden p-1">{play?(<i className="my-1 bi bi-pause"></i>):(<i className="my-1 bi bi-play-fill border"></i>)}</button>
+            <button onClick={full} className="mx-1 border-0 rounded-circle fs-4 overflow-hidden p-1"><i className="m-1 bi bi-arrows-fullscreen"></i></button>
             <div className='col-4 px-1 d-none d-md-block mx-1'>
                 <input type="range" onChange={e=>setVolume(Number(e.target.value))} className="form-range col-8" min="0" max="1" step="0.1" id="customRange3"></input>
             </div>
@@ -77,22 +78,22 @@ const similar=(x)=>{
                   <progress max={1} value={played} />
             </div> */}
 
-            <select name="" id="quality" onChange={e=>qualityControl(e.target.value)}>
+            <select name="" className="p-1 border-0 rounded-1" id="quality" onChange={e=>qualityControl(e.target.value)}>
                 <option value="1">Low</option>
                 <option value="2">Mid</option>
                 <option value="3">High</option>
             </select>
         </div>
         <h3 className='mt-5'>Similar</h3>
-        <div className='d-flex overflow-auto'>
+        <div className='d-flex overflow-auto col-12 mb-3'>
             
         {post.length===0?'':post.map((post, index)=>(
-        <div key={index} className="border col-4 text-center m-1">
+        <div key={index} className={`border col-4 ${theme?'mybg-light':'mybg-dark'}`} >
             <div className="col-12 col-md-10 col-lg-8 mx-auto">
-                <img src='https://www.clipartmax.com/png/middle/241-2419765_live-tv-streaming-icon-live-tv-icon-png.png' calss="" style={{width:'100%'}} alt="" />
+                <img src='https://www.clipartmax.com/png/middle/241-2419765_live-tv-streaming-icon-live-tv-icon-png.png' calss="m-0" style={{width:'100%'}} alt="" />
             </div>
-            <h5> <Link to={'/watch/'+post._id}>{post.name}</Link></h5>
-            <h4>{post.category}</h4>
+            <h6 className="text-uppercase open-sans mt-1"> <Link to={'/watch/'+post._id} className={`text-decoration-none ${theme?'mybg-light':'mybg-dark'}`}>{post.name}</Link></h6>
+            <h6>{post.category}</h6>
         </div>
       ))}
         </div>

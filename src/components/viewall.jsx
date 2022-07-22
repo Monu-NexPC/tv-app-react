@@ -5,7 +5,7 @@ import {base} from './baseURL'
 
 const baseURL = base+"getAll/";
 
-export default function View({logged}) {
+export default function View({logged, theme}) {
   const [post, setPost] = useState(null);
   const [tempPost, setTempPost] = useState(null);
   const [lang, setLang]= useState('1');
@@ -27,20 +27,20 @@ export default function View({logged}) {
       setGenre(e.target.value);
   }
   const search = (e)=>{
-      setPost(tempPost.filter(a=> {return a.name.match(e.target.value)}))
+      setPost(tempPost.filter(a=> {return a.name.match(e.target.value.toLowerCase())}))
   }
   
 
   if (!post) return null;
   
   return (
-    <div className="row m-0">
+    <div className={`row m-0 ${theme?'':'mybg-dark'}`}>
       <div className="row m-0 g-0">
         <div className="col-12">
-          <input type="text" name="" className="form-control" id="search" placeholder="Search" onChange={search}/>
+          <input type="text" name="" className={`form-control rounded-0 ${theme?'mybg-light':'mybg-dark'}`} id="search" placeholder="Search" onChange={search}/>
         </div>
         <div className="col-6">
-          <select className="form-select rounded-0 dropdown-toggle" id="language" onChange={languageChange}>
+          <select className={`form-select rounded-0 dropdown-toggle ${theme?'mybg-light':'mybg-dark'}`} id="language" onChange={languageChange}>
             <option value="1">Language All</option>
             <option value="hindi">Language Hindi</option>
             <option value="english">Language English</option>
@@ -51,7 +51,7 @@ export default function View({logged}) {
           </select>
         </div>
         <div className="col-6">
-          <select className="rounded-0 form-select dropdown-toggle" id="genre" onChange={genreChange}>
+          <select className={`rounded-0 form-select dropdown-toggle ${theme?'mybg-light':'mybg-dark'}`} id="genre" onChange={genreChange}>
             <option value="1">All</option>
             <option value="news">News</option>
             <option value="music">Music</option>
@@ -64,12 +64,12 @@ export default function View({logged}) {
         </div>
       </div>
       {post.map((post, index)=>(
-        <div key={index} className="border col-4">
+        <div key={index} className={`border col-4 ${theme?'mybg-light':'mybg-dark'}`} >
             <div className="col-12 col-md-10 col-lg-8 mx-auto">
-                <img src='https://www.clipartmax.com/png/middle/241-2419765_live-tv-streaming-icon-live-tv-icon-png.png' calss="" style={{width:'100%'}} alt="" />
+                <img src='https://www.clipartmax.com/png/middle/241-2419765_live-tv-streaming-icon-live-tv-icon-png.png' calss="m-0" style={{width:'100%'}} alt="" />
             </div>
-            <h1> <Link to={'/watch/'+post._id}>{post.name}</Link></h1>
-            <h4>{post.category}</h4>
+            <h6 className="text-uppercase open-sansmt-1"> <Link to={'/watch/'+post._id} className={`text-decoration-none ${theme?'mybg-light':'mybg-dark'}`}>{post.name}</Link></h6>
+            <h6>{post.category}</h6>
         </div>
       ))}
     </div>
