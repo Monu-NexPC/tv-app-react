@@ -65,10 +65,12 @@ export default function View({logged, theme}) {
       </div>
       {post.map((post, index)=>(
         <div key={index} className={`border col-4 ${theme?'mybg-light':'mybg-dark'}`} >
+            <Link to={'/watch/'+post._id} className={`text-decoration-none ${theme?'mybg-light':'mybg-dark'}`}>
             <div className="col-12 col-md-10 col-lg-8 mx-auto">
                 <img src='https://www.clipartmax.com/png/middle/241-2419765_live-tv-streaming-icon-live-tv-icon-png.png' calss="m-0" style={{width:'100%'}} alt="" />
             </div>
-            <h6 className="text-uppercase open-sansmt-1"> <Link to={'/watch/'+post._id} className={`text-decoration-none ${theme?'mybg-light':'mybg-dark'}`}>{post.name}</Link></h6>
+            <h6 className="text-uppercase open-sansmt-1"> {post.name}</h6>
+            </Link>
             <h6>{post.category}</h6>
         </div>
       ))}
