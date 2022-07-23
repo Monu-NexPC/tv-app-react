@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-//import ReactPlayer from 'react-player/lazy'
-import ReactPlayer from 'react-player';
+import ReactPlayer from 'react-player/lazy'
+//import ReactPlayer from 'react-player';
 import { useParams, Link } from 'react-router-dom';
 import axios from 'axios';
 
