@@ -64,7 +64,8 @@ const similar=(x)=>{
             <ReactPlayer className="" width={`${width}`} id="myvideo" url={videoUrl} volume={volume} playing={play} pip={true} />
         </div>
         <div className='d-flex justify-content-center mt-1'>
-            <button onClick={playMe} className="mx-1 border-0 rounded-circle fs-4 overflow-hidden p-1">{play?(<i className="my-1 bi bi-pause"></i>):(<i className="my-1 bi bi-play-fill border"></i>)}</button>
+            <button onClick={playMe} className="mx-1 border-0 rounded-circle fs-4 overflow-hidden p-1">{play?(<i className="my-1 bi bi-pause"></i>):(<i className="my-1 
+            bi bi-play-fill border"></i>)}</button>
             <button onClick={full} className="mx-1 border-0 rounded-circle fs-4 overflow-hidden p-1"><i className="m-1 bi bi-arrows-fullscreen"></i></button>
             <div className='col-4 px-1 d-none d-md-block mx-1'>
                 <input type="range" onChange={e=>setVolume(Number(e.target.value))} className="form-range col-8" min="0" max="1" step="0.1" id="customRange3"></input>
