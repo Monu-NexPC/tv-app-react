@@ -18,12 +18,12 @@ export default function View({logged, theme}) {
     });
   }, []);
   const languageChange = (e)=>{
-    e.target.value=='1'?setPost(genre==='1'?tempPost:tempPost.filter(a=>{return a.category===genre})):setPost(tempPost.filter(a=>{return genre==='1'?a.language === e.target.value: a.language === e.target.value&&a.category==genre}));
+    e.target.value==='1'?setPost(genre==='1'?tempPost:tempPost.filter(a=>{return a.category===genre})):setPost(tempPost.filter(a=>{return genre==='1'?a.language === e.target.value: a.language === e.target.value&&a.category===genre}));
     setLang(e.target.value);
   }
   const genreChange = (e)=>{
       /* e.target.value=='1'?setPost(tempPost):setPost(tempPost.filter(a=>{return a.category === e.target.value})); */
-      e.target.value=='1'?setPost(lang==='1'?tempPost:tempPost.filter(a=>{return a.language===lang})):setPost(tempPost.filter(a=>{return lang==='1'?a.category === e.target.value: a.category === e.target.value&&a.language==lang}));
+      e.target.value==='1'?setPost(lang==='1'?tempPost:tempPost.filter(a=>{return a.language===lang})):setPost(tempPost.filter(a=>{return lang==='1'?a.category === e.target.value: a.category === e.target.value&&a.language===lang}));
       setGenre(e.target.value);
   }
   const search = (e)=>{

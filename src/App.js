@@ -36,7 +36,7 @@ function App() {
           <span className="navbar-brand mb-0 h1 rye"><Link className={`text-decoration-none nav-link ${theme?'mybg-light':'mybg-dark'}`} to="/">OurTV</Link></span>
           <div className="" id="navbarNav">
             <ul className="navbar-nav d-flex flex-row">
-                <li>{channelName}</li>
+              {currntPosition === '/' ? '' : <li>{channelName}</li>}
               {logged?(
               <li className="nav-item mx-2">
                 <Link className="nav-link active" to="channelList">Channels</Link>
